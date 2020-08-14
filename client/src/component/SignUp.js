@@ -16,7 +16,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import ErrorIcon from "@material-ui/icons/Error";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 
-const SignUpStyles = theme => ({
+const SignUpStyles = (theme) => ({
   errorCheck: {
     color: "#E63946",
     fontSize: 12,
@@ -24,19 +24,19 @@ const SignUpStyles = theme => ({
     marginTop: 3,
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   iconsMessage: {
-    marginRight: 4
+    marginRight: 4,
   },
   loading: {
     display: "flex",
     height: "100%",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   loadingLogo: {
-    color: "#E63946"
+    color: "#E63946",
   },
   paperContainer: {
     height: "100%",
@@ -49,8 +49,8 @@ const SignUpStyles = theme => ({
     [theme.breakpoints.down("sm")]: {
       display: "block",
       padding: "20px 0px 20px 0px",
-      textAlign: "-webkit-center"
-    }
+      textAlign: "-webkit-center",
+    },
   },
   cardSection: {
     backgroundColor: "rgba(255, 255, 255, 0.95)",
@@ -63,43 +63,43 @@ const SignUpStyles = theme => ({
     alignItems: "center",
     justifyContent: "center",
     [theme.breakpoints.down("sm")]: {
-      width: "90%"
-    }
+      width: "90%",
+    },
   },
   mainGrid: {
-    padding: 40
+    padding: 40,
   },
   elGrid: {
-    marginBottom: 15
+    marginBottom: 15,
   },
   rootInputText: {
-    fontSize: 13
+    fontSize: 13,
   },
   rootInput: {
     width: "100%",
     "& .MuiInput-underline:after": {
-      borderBottomColor: "#e63946"
-    }
+      borderBottomColor: "#e63946",
+    },
   },
   label: {
     "&$focusedLabel": {
-      color: "#e63946"
-    }
+      color: "#e63946",
+    },
   },
   focusedLabel: {},
   submitButton: {
-    width: "100%"
+    width: "100%",
   },
   select: {
     width: "100%",
     fontSize: 13,
     "&:after": {
-      borderBottomColor: "#e63946"
-    }
+      borderBottomColor: "#e63946",
+    },
   },
   formControl: {
-    width: "100%"
-  }
+    width: "100%",
+  },
 });
 
 class SignUp extends Component {
@@ -126,13 +126,13 @@ class SignUp extends Component {
       pwdRegLet: false,
       pwdRegCap: false,
       pwdRegDig: false,
-      pwdRegLen: false
+      pwdRegLen: false,
     };
   }
 
   _isMounted = false;
 
-  checkRegexUsername = str => {
+  checkRegexUsername = (str) => {
     var accentedCharacters =
       "àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ";
     const checkSpecChar = new RegExp(
@@ -145,7 +145,7 @@ class SignUp extends Component {
     }
   };
 
-  checkRegexLastname = str => {
+  checkRegexLastname = (str) => {
     var accentedCharacters =
       "àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ";
     const checkSpecChar = new RegExp(
@@ -158,7 +158,7 @@ class SignUp extends Component {
     }
   };
 
-  checkRegexFirstname = str => {
+  checkRegexFirstname = (str) => {
     var accentedCharacters =
       "àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ";
     const checkSpecChar = new RegExp(
@@ -181,7 +181,7 @@ class SignUp extends Component {
     }
   };
 
-  checkEmailLength = str => {
+  checkEmailLength = (str) => {
     if (str.length === str.replace(/\s/g, "").length) {
       this.setState({ emailWhiteSpaces: true });
     } else {
@@ -189,7 +189,7 @@ class SignUp extends Component {
     }
   };
 
-  checkUsernameLength = str => {
+  checkUsernameLength = (str) => {
     if (str.length === str.replace(/\s/g, "").length) {
       this.setState({ usernameWhiteSpaces: true });
     } else {
@@ -197,7 +197,7 @@ class SignUp extends Component {
     }
   };
 
-  checkFirstnameLength = str => {
+  checkFirstnameLength = (str) => {
     if (str.length === str.replace(/\s/g, "").length) {
       this.setState({ firstNameWhiteSpaces: true });
     } else {
@@ -205,7 +205,7 @@ class SignUp extends Component {
     }
   };
 
-  checkLastnameLength = str => {
+  checkLastnameLength = (str) => {
     if (str.length === str.replace(/\s/g, "").length) {
       this.setState({ lastNameWhiteSpaces: true });
     } else {
@@ -213,7 +213,7 @@ class SignUp extends Component {
     }
   };
 
-  checkPasswordLength = str => {
+  checkPasswordLength = (str) => {
     if (str.length === str.replace(/\s/g, "").length) {
       this.setState({ pwdWhiteSpaces: true });
     } else {
@@ -221,7 +221,7 @@ class SignUp extends Component {
     }
   };
 
-  createUser = e => {
+  createUser = (e) => {
     e.preventDefault();
     fetch("/api/signUp", {
       method: "POST",
@@ -235,12 +235,12 @@ class SignUp extends Component {
         ).format("DD/MM/YYYY"),
         gender: this.state.gender,
         password: this.state.password,
-        confirmedPassword: this.state.confirmedPassword
+        confirmedPassword: this.state.confirmedPassword,
       }),
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     })
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         if (res.signup.signup) {
           this.props.auth.successMessage("Account created! Check your mails.");
           this.props.props.history.push("/SignIn");
@@ -248,37 +248,37 @@ class SignUp extends Component {
           this.props.auth.errorMessage(res.signup.msg);
         }
       })
-      .catch(err => this.props.auth.errorMessage(err));
+      .catch((err) => this.props.auth.errorMessage(err));
   };
 
-  handleChangeGender = e => {
+  handleChangeGender = (e) => {
     this.setState({ gender: e.target.value });
   };
 
-  handleChangeUsername = e => {
+  handleChangeUsername = (e) => {
     this.setState({ username: e.target.value });
     this.checkUsernameLength(e.target.value);
     this.checkRegexUsername(e.target.value);
   };
 
-  handleChangeLastname = e => {
+  handleChangeLastname = (e) => {
     this.setState({ lastname: e.target.value });
     this.checkLastnameLength(e.target.value);
     this.checkRegexLastname(e.target.value);
   };
 
-  handleChangeFirstname = e => {
+  handleChangeFirstname = (e) => {
     this.setState({ firstname: e.target.value });
     this.checkFirstnameLength(e.target.value);
     this.checkRegexFirstname(e.target.value);
   };
 
-  handleChangeEmail = e => {
+  handleChangeEmail = (e) => {
     this.setState({ email: e.target.value });
     this.checkEmailLength(e.target.value);
   };
 
-  handleChangePassword = e => {
+  handleChangePassword = (e) => {
     const letters = new RegExp("^(?=.*[a-z])");
     const capitals = new RegExp("^(?=.*[A-Z])");
     const digit = new RegExp("^(?=.*[0-9])");
@@ -288,18 +288,18 @@ class SignUp extends Component {
       pwdRegCap: capitals.test(e.target.value),
       pwdRegDig: digit.test(e.target.value),
       pwdRegLen: length.test(e.target.value),
-      password: e.target.value
+      password: e.target.value,
     });
     this.checkPasswordMatch(e.target.value, this.state.confirmedPassword);
     this.checkPasswordLength(e.target.value);
   };
 
-  handleChangeConfirmedPassword = e => {
+  handleChangeConfirmedPassword = (e) => {
     this.setState({ confirmedPassword: e.target.value });
     this.checkPasswordMatch(this.state.password, e.target.value);
   };
 
-  handleChangeDate = e => {
+  handleChangeDate = (e) => {
     this.setState({ birthday: e.target.value });
   };
 
@@ -337,7 +337,7 @@ class SignUp extends Component {
       pwdRegLet,
       pwdRegCap,
       pwdRegLen,
-      pwdRegDig
+      pwdRegDig,
     } = this.state;
     const { classes } = this.props;
 
@@ -353,7 +353,7 @@ class SignUp extends Component {
       <div id="unloggedRoot" className={classes.paperContainer}>
         <Paper className={classes.cardSection} elevation={0}>
           <form
-            onSubmit={event => {
+            onSubmit={(event) => {
               this.createUser(event);
             }}
           >
@@ -361,16 +361,16 @@ class SignUp extends Component {
               <Grid item xs={12} sm={4} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   inputProps={{
-                    className: classes.rootInputText
+                    className: classes.rootInputText,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
-                    }
+                      focused: classes.focusedLabel,
+                    },
                   }}
                   required
                   id="usernameTextfield"
@@ -385,31 +385,27 @@ class SignUp extends Component {
                     <ErrorIcon className={classes.iconsMessage} />
                     Username must not contain white space.
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
                 {!usernameRegex ? (
                   <p className={classes.errorCheck}>
                     <ErrorIcon className={classes.iconsMessage} />
                     Username must only contain letters.
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
               </Grid>
               <Grid item xs={12} sm={4} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   inputProps={{
-                    className: classes.rootInputText
+                    className: classes.rootInputText,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
-                    }
+                      focused: classes.focusedLabel,
+                    },
                   }}
                   required
                   id="lastnameTextfield"
@@ -424,31 +420,27 @@ class SignUp extends Component {
                     <ErrorIcon className={classes.iconsMessage} />
                     Last name must not contain white space.
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
                 {lastNameRegExp === false ? (
                   <p className={classes.errorCheck}>
                     <ErrorIcon className={classes.iconsMessage} />
                     Only letters are allowed for last name.
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
               </Grid>
               <Grid item xs={12} sm={4} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   inputProps={{
-                    className: classes.rootInputText
+                    className: classes.rootInputText,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
-                    }
+                      focused: classes.focusedLabel,
+                    },
                   }}
                   required
                   id="firstnameTextfield"
@@ -463,24 +455,20 @@ class SignUp extends Component {
                     <ErrorIcon className={classes.iconsMessage} />
                     First name must not contain white space.
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
                 {firstNameRegExp === false ? (
                   <p className={classes.errorCheck}>
                     <ErrorIcon className={classes.iconsMessage} />
                     Only letters are allowed for first name.
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
               </Grid>
               <Grid item xs={12} sm={4} className={classes.elGrid}>
                 <FormControl className={classes.formControl}>
                   <InputLabel
                     classes={{
                       root: classes.label,
-                      focused: classes.focusedLabel
+                      focused: classes.focusedLabel,
                     }}
                     id="genderUser"
                   >
@@ -502,17 +490,17 @@ class SignUp extends Component {
               <Grid item xs={12} sm={4} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   inputProps={{
-                    className: classes.rootInputText
+                    className: classes.rootInputText,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
+                      focused: classes.focusedLabel,
                     },
-                    shrink: true
+                    shrink: true,
                   }}
                   required
                   label="Birthdate"
@@ -525,16 +513,16 @@ class SignUp extends Component {
               <Grid item xs={12} sm={4} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   inputProps={{
-                    className: classes.rootInputText
+                    className: classes.rootInputText,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
-                    }
+                      focused: classes.focusedLabel,
+                    },
                   }}
                   required
                   id="emailTextfield"
@@ -549,23 +537,21 @@ class SignUp extends Component {
                     <ErrorIcon className={classes.iconsMessage} />
                     Email must not contain white space
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
               </Grid>
               <Grid item xs={12} sm={6} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   inputProps={{
-                    className: classes.rootInputText
+                    className: classes.rootInputText,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
-                    }
+                      focused: classes.focusedLabel,
+                    },
                   }}
                   required
                   id="passwordTextfield"
@@ -580,16 +566,16 @@ class SignUp extends Component {
               <Grid item xs={12} sm={6} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   inputProps={{
-                    className: classes.rootInputText
+                    className: classes.rootInputText,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
-                    }
+                      focused: classes.focusedLabel,
+                    },
                   }}
                   required
                   id="confirmedPasswordTextfield"
@@ -607,17 +593,13 @@ class SignUp extends Component {
                     <ErrorIcon className={classes.iconsMessage} />
                     Passwords don't match
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
                 {pwdWhiteSpaces === false ? (
                   <p className={classes.errorCheck}>
                     <ErrorIcon className={classes.iconsMessage} />
                     Password must not contain white space
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
                 {pwdRegLet === false ? (
                   <p className={classes.errorCheck}>
                     <RadioButtonUncheckedIcon
@@ -625,9 +607,7 @@ class SignUp extends Component {
                     />
                     Password must contain at least one letter
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
                 {pwdRegCap === false ? (
                   <p className={classes.errorCheck}>
                     <RadioButtonUncheckedIcon
@@ -635,9 +615,7 @@ class SignUp extends Component {
                     />
                     Password must contain at least one Capital Letter
                   </p>
-                ) : (
-                  undefined
-                )}{" "}
+                ) : undefined}{" "}
                 {pwdRegLen === false ? (
                   <p className={classes.errorCheck}>
                     <RadioButtonUncheckedIcon
@@ -645,9 +623,7 @@ class SignUp extends Component {
                     />
                     Password must contain at least 8 characters
                   </p>
-                ) : (
-                  undefined
-                )}{" "}
+                ) : undefined}{" "}
                 {pwdRegDig === false ? (
                   <p className={classes.errorCheck}>
                     <RadioButtonUncheckedIcon
@@ -655,9 +631,7 @@ class SignUp extends Component {
                     />
                     Password must contain at least one digit
                   </p>
-                ) : (
-                  undefined
-                )}
+                ) : undefined}
               </Grid>
               <Grid item xs={12}>
                 <Button

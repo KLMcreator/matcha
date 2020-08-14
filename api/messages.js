@@ -2,7 +2,7 @@ const pool = require("../pool.js");
 
 const getMessages = (request, response) => {
   const { req, token } = request;
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (req.receiver && token && req.limit) {
       pool.pool.query(
         "SELECT COUNT (*), a.created_at FROM likes a JOIN ( SELECT sender, receiver, unliked, MAX(created_at) FROM likes WHERE sender = (SELECT id FROM users WHERE connected_token = $1) GROUP BY sender, receiver, unliked) b ON a.sender = b.receiver INNER JOIN users u1 ON u1.id = a.receiver INNER JOIN users u2 ON u2.id = b.receiver AND a.receiver = b.sender AND a.sender = $2 and b.receiver = $3 AND a.unliked = $4 AND b.unliked = $5 GROUP BY a.created_at HAVING COUNT(*) > 0 ORDER BY created_at DESC;",
@@ -24,7 +24,7 @@ const getMessages = (request, response) => {
                   req.receiver,
                   token,
                   false,
-                  req.limit
+                  req.limit,
                 ],
                 (error, checkMsgResult) => {
                   if (error) {
@@ -44,7 +44,7 @@ const getMessages = (request, response) => {
       );
     } else {
       resolve({
-        msg: "Unable to get your messages."
+        msg: "Unable to get your messages.",
       });
     }
   });
@@ -52,7 +52,7 @@ const getMessages = (request, response) => {
 
 const sendMessage = (request, response) => {
   const { req, token } = request;
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (req.message && req.receiver && token) {
       req.message = req.message.trim();
       if (req.message && req.message.length < 300) {
@@ -86,7 +86,7 @@ const sendMessage = (request, response) => {
                         }
                         if (!resultAddNotif.rowCount) {
                           resolve({
-                            msg: "Unable to update user notifications."
+                            msg: "Unable to update user notifications.",
                           });
                         } else {
                           resolve({ message: true });
@@ -116,7 +116,7 @@ const sendMessage = (request, response) => {
 
 const deleteAllMessages = (request, response) => {
   const { req, token } = request;
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (req.receiver && token) {
       pool.pool.query(
         "SELECT COUNT (*), a.created_at FROM likes a JOIN ( SELECT sender, receiver, unliked, MAX(created_at) FROM likes WHERE sender = (SELECT id FROM users WHERE connected_token = $1) GROUP BY sender, receiver, unliked) b ON a.sender = b.receiver INNER JOIN users u1 ON u1.id = a.receiver INNER JOIN users u2 ON u2.id = b.receiver AND a.receiver = b.sender AND a.sender = $2 and b.receiver = $3 AND a.unliked = $4 AND b.unliked = $5 GROUP BY a.created_at HAVING COUNT(*) > 0 ORDER BY created_at DESC;",
@@ -165,7 +165,7 @@ const deleteAllMessages = (request, response) => {
       );
     } else {
       resolve({
-        msg: "Unable to execute this request."
+        msg: "Unable to execute this request.",
       });
     }
   });
@@ -173,7 +173,7 @@ const deleteAllMessages = (request, response) => {
 
 const deleteMessage = (request, response) => {
   const { req, token } = request;
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (req.receiver && token && req.id) {
       pool.pool.query(
         "SELECT COUNT (*), a.created_at FROM likes a JOIN ( SELECT sender, receiver, unliked, MAX(created_at) FROM likes WHERE sender = (SELECT id FROM users WHERE connected_token = $1) GROUP BY sender, receiver, unliked) b ON a.sender = b.receiver INNER JOIN users u1 ON u1.id = a.receiver INNER JOIN users u2 ON u2.id = b.receiver AND a.receiver = b.sender AND a.sender = $2 and b.receiver = $3 AND a.unliked = $4 AND b.unliked = $5 GROUP BY a.created_at HAVING COUNT(*) > 0 ORDER BY created_at DESC;",
@@ -222,7 +222,7 @@ const deleteMessage = (request, response) => {
       );
     } else {
       resolve({
-        msg: "Unable to execute this request."
+        msg: "Unable to execute this request.",
       });
     }
   });
@@ -232,5 +232,5 @@ module.exports = {
   getMessages,
   sendMessage,
   deleteAllMessages,
-  deleteMessage
+  deleteMessage,
 };

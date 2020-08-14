@@ -2,7 +2,7 @@ const pool = require("./../pool.js");
 
 const addVisits = (request, response) => {
   const { req, token } = request;
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (req.receiver && token) {
       pool.pool.query(
         "SELECT id FROM users WHERE connected_token = $1",
@@ -35,7 +35,7 @@ const addVisits = (request, response) => {
                       }
                       if (!resultInsertVisit.rowCount) {
                         resolve({
-                          msg: "Unable to update user visit history."
+                          msg: "Unable to update user visit history.",
                         });
                       } else {
                         pool.pool.query(
@@ -47,7 +47,7 @@ const addVisits = (request, response) => {
                             }
                             if (!resultUpdatePop.rowCount) {
                               resolve({
-                                msg: "Unable to update user popularity score."
+                                msg: "Unable to update user popularity score.",
                               });
                             } else {
                               pool.pool.query(
@@ -60,7 +60,7 @@ const addVisits = (request, response) => {
                                   if (!resultAddNotif.rowCount) {
                                     resolve({
                                       msg:
-                                        "Unable to update user notifications."
+                                        "Unable to update user notifications.",
                                     });
                                   } else {
                                     resolve({ visit: true });
@@ -75,7 +75,7 @@ const addVisits = (request, response) => {
                   );
                 } else {
                   resolve({
-                    msg: "You were the last one that visited this profile."
+                    msg: "You were the last one that visited this profile.",
                   });
                 }
               }
@@ -91,7 +91,7 @@ const addVisits = (request, response) => {
 
 const checkIfLoggedHasBeenVisited = (request, response) => {
   const { req, token } = request;
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (req.receiver && token) {
       pool.pool.query(
         "SELECT created_at FROM visits WHERE receiver = (SELECT id FROM users WHERE connected_token = $1) AND sender = $2;",
@@ -115,7 +115,7 @@ const checkIfLoggedHasBeenVisited = (request, response) => {
 
 const getLastVisits = (request, response) => {
   const { token } = request;
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (token) {
       pool.pool.query(
         "SELECT u.username, v.sender, v.receiver, v.created_at FROM visits v INNER JOIN users u ON u.id = v.sender WHERE v.receiver = (SELECT id FROM users WHERE connected_token = $1) AND NOT EXISTS (SELECT 1 FROM blocked bu WHERE bu.sender = v.receiver AND bu.receiver = (SELECT id FROM users WHERE connected_token = $2)) AND NOT EXISTS (SELECT 1 FROM blocked bu WHERE bu.receiver = v.sender AND bu.sender = (SELECT id FROM users WHERE connected_token = $3)) ORDER BY v.created_at DESC;",
@@ -139,7 +139,7 @@ const getLastVisits = (request, response) => {
 
 const getVisitList = (request, response) => {
   const { token } = request;
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (token) {
       pool.pool.query(
         "SELECT u.username, v.sender, v.receiver, v.created_at FROM visits v INNER JOIN users u ON u.id = v.receiver WHERE v.sender = (SELECT id FROM users WHERE connected_token = $1) AND NOT EXISTS (SELECT 1 FROM blocked bu WHERE bu.sender = v.sender AND bu.receiver = (SELECT id FROM users WHERE connected_token = $2)) AND NOT EXISTS (SELECT 1 FROM blocked bu WHERE bu.receiver = v.receiver AND bu.sender = (SELECT id FROM users WHERE connected_token = $3)) ORDER BY v.created_at DESC;",
@@ -165,5 +165,5 @@ module.exports = {
   addVisits,
   getLastVisits,
   checkIfLoggedHasBeenVisited,
-  getVisitList
+  getVisitList,
 };

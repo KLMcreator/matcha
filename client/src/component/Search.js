@@ -34,21 +34,21 @@ const sortOptions = [
   { value: "ASCTAGS", label: "ASC MATCHING TAGS" },
   { value: "DESCTAGS", label: "DESC MATCHING TAGS" },
   { value: "ASCLOC", label: "ASC PROXIMITY" },
-  { value: "DESCLOC", label: "DESC PROXIMITY" }
+  { value: "DESCLOC", label: "DESC PROXIMITY" },
 ];
 
-const homeStyles = theme => ({
+const homeStyles = (theme) => ({
   root: {
     height: "100%",
-    flexGrow: 1
+    flexGrow: 1,
   },
   optionUsers: {
     display: "flex",
     justifyContent: "space-between",
     padding: 10,
     [theme.breakpoints.down("sm")]: {
-      display: "block"
-    }
+      display: "block",
+    },
   },
   searchUserPaper: {
     borderColor: "hsl(0,0%,80%)",
@@ -57,103 +57,103 @@ const homeStyles = theme => ({
     borderWidth: 1,
     display: "flex",
     alignItems: "center",
-    width: "100%"
+    width: "100%",
   },
   searchInput: {
-    padding: "0px 0px 0px 20px"
+    padding: "0px 0px 0px 20px",
   },
   searchContainer: {
     flex: 1,
-    padding: 0
+    padding: 0,
   },
   loadMoreContainer: {
     width: "100%",
     marginTop: 5,
-    height: 40
+    height: 40,
   },
   loadMoreButton: {
     width: "100%",
     borderRadius: 0,
-    color: "#E63946"
+    color: "#E63946",
   },
   filterLeft: {
     flex: 1,
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   filterSpace: {
-    flex: 1
+    flex: 1,
   },
   filterRight: {
-    flex: 1
+    flex: 1,
   },
   loading: {
     display: "flex",
     height: "100%",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   loadingLogo: {
-    color: "#E63946"
+    color: "#E63946",
   },
   rootSend: {
-    width: "100%"
+    width: "100%",
   },
   borderBottom: {
     "&.MuiInput-underline:before": {
-      borderBottom: "1px solid #FDC8B7"
+      borderBottom: "1px solid #FDC8B7",
     },
     "&.MuiInput-underline:after": {
-      borderBottom: "1px solid #FA7B38"
+      borderBottom: "1px solid #FA7B38",
     },
     "&.MuiInput-underline:hover::before": {
-      borderBottom: "2px solid #E63946"
+      borderBottom: "2px solid #E63946",
     },
     "&.MuiInput-underline:hover::after": {
-      borderBottom: "1px solid #E63946"
-    }
+      borderBottom: "1px solid #E63946",
+    },
   },
   nativeSelect: {
     width: "100%",
     color: "#545454",
     "&.MuiInput-underline:before": {
-      borderBottom: "1px solid #FDC8B7"
+      borderBottom: "1px solid #FDC8B7",
     },
     "&.MuiInput-underline:after": {
-      borderBottom: "1px solid #FA7B38"
+      borderBottom: "1px solid #FA7B38",
     },
     "&.MuiInput-underline:hover::before": {
-      borderBottom: "2px solid #E63946"
+      borderBottom: "2px solid #E63946",
     },
     "&.MuiInput-underline:hover::after": {
-      borderBottom: "1px solid #E63946"
-    }
+      borderBottom: "1px solid #E63946",
+    },
   },
   renderSection: {
-    height: "100%"
+    height: "100%",
   },
   filterContainer: {
     padding: 10,
     margin: 10,
     backgroundColor: "#fff",
     borderRadius: 8,
-    border: "0.5px solid rgba(41, 41, 41, .1)"
+    border: "0.5px solid rgba(41, 41, 41, .1)",
   },
   filterCenter: {
-    textAlign: "-webkit-center"
+    textAlign: "-webkit-center",
   },
   rangeWidth: {
-    width: "90%"
+    width: "90%",
   },
   captionIcon: {
-    color: "#545454"
+    color: "#545454",
   },
   userContainer: {
-    padding: "10px 10px 0 10px"
+    padding: "10px 10px 0 10px",
   },
   userPaper: {
     backgroundColor: "#fff",
     borderRadius: 8,
-    border: "0.5px solid rgba(41, 41, 41, .3)"
+    border: "0.5px solid rgba(41, 41, 41, .3)",
   },
   userCardHeaderTitle: {
     textDecoration: "none",
@@ -163,43 +163,43 @@ const homeStyles = theme => ({
     "&:hover": {
       color: "#E63946",
       transition: "0.2s",
-      textDecoration: "underline"
-    }
+      textDecoration: "underline",
+    },
   },
   userCardHeaderCaption: {
     color: "#545454",
     margin: 0,
-    fontSize: 11
+    fontSize: 11,
   },
   userCardInfoTitle: {
     fontSize: 13,
     color: "#292929",
-    fontWeight: 500
+    fontWeight: 500,
   },
   paddingTen: {
-    padding: 10
-  }
+    padding: 10,
+  },
 });
 
-const usersStyles = theme => ({
+const usersStyles = (theme) => ({
   userContainer: {
-    padding: "10px 10px 0 10px"
-  }
+    padding: "10px 10px 0 10px",
+  },
 });
 
-const userStyles = theme => ({
+const userStyles = (theme) => ({
   userCardInfoTitle: {
     fontSize: 13,
     color: "#292929",
-    fontWeight: 500
+    fontWeight: 500,
   },
   userCardLink: {
     textDecoration: "none",
-    color: "#292929"
-  }
+    color: "#292929",
+  },
 });
 
-const MenuList = props => {
+const MenuList = (props) => {
   const { options, children, maxHeight, getValue } = props;
   const [value] = getValue();
   const initialOffset = options.indexOf(value) * 35;
@@ -216,7 +216,7 @@ const MenuList = props => {
   );
 };
 
-const RenderUser = props => {
+const RenderUser = (props) => {
   const {
     id,
     username,
@@ -231,7 +231,7 @@ const RenderUser = props => {
     country,
     city,
     birthdate,
-    photos
+    photos,
   } = props.user;
   const { classes } = props;
   const photo = photos ? JSON.parse(photos) : null;
@@ -242,21 +242,19 @@ const RenderUser = props => {
           nextButtonText: ">",
           prevButtonText: "<",
           pagingDotsStyle: {
-            fill: "#fff"
-          }
+            fill: "#fff",
+          },
         }}
       >
         {photo.map((el, index) =>
           el ? (
             <img
-              onError={e => (e.target.src = "")}
+              onError={(e) => (e.target.src = "")}
               alt={el + username}
               key={el + username}
               src={el.startsWith("https://") ? el : "./src/assets/photos/" + el}
             />
-          ) : (
-            undefined
-          )
+          ) : undefined
         )}
       </Carousel>
       <CardActionArea disableRipple>
@@ -265,13 +263,13 @@ const RenderUser = props => {
           to={{
             pathname: "/User",
             state: {
-              id: id
-            }
+              id: id,
+            },
           }}
         >
           <CardContent
             style={{
-              padding: "5px 5px 0px 5px"
+              padding: "5px 5px 0px 5px",
             }}
           >
             <Typography variant="subtitle2">
@@ -313,7 +311,7 @@ const RenderUser = props => {
                 style={{
                   fontSize: 11,
                   color: connected ? "#0CCA4A" : "#E63946",
-                  verticalAlign: "middle"
+                  verticalAlign: "middle",
                 }}
               ></FiberManualRecordIcon>
             </Typography>
@@ -372,14 +370,14 @@ class Home extends Component {
       searchTags: [],
       searchGender: [],
       searchOrientation: [],
-      searchWaiting: 0
+      searchWaiting: 0,
     };
   }
 
   _isMounted = false;
   RenderUsersStyled = withStyles(usersStyles)(RenderUsers);
 
-  getUsersList = async limit => {
+  getUsersList = async (limit) => {
     fetch("/api/users/list", {
       method: "POST",
       body: JSON.stringify({
@@ -392,25 +390,25 @@ class Home extends Component {
         city: this.state.searchCity,
         searchTags:
           this.state.searchTags.length === 0
-            ? this.state.tagList.map(a => a.label)
-            : this.state.searchTags.map(a => a.label)
+            ? this.state.tagList.map((a) => a.label)
+            : this.state.searchTags.map((a) => a.label),
       }),
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     })
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         if (this._isMounted) {
           this.setState({
             users: res.users,
             defaultUsers: res.users,
             isLoading: false,
-            limit: limit
+            limit: limit,
           });
         }
       })
-      .catch(err => this.props.auth.errorMessage(err));
+      .catch((err) => this.props.auth.errorMessage(err));
   };
 
   getCountries = () => {
@@ -421,20 +419,20 @@ class Home extends Component {
     while (i < len) {
       countries.push({
         value: i,
-        label: geoEntries[i][0]
+        label: geoEntries[i][0],
       });
       i++;
     }
     this.setState({
-      countries: countries
+      countries: countries,
     });
     this.getUsersList(20);
   };
 
   getLoggedUser = async () => {
     fetch("/api/profile")
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         if (this._isMounted) {
           this.setState({
             loggedUser: {
@@ -460,24 +458,24 @@ class Home extends Component {
               last_connection: res.user[0].last_connection,
               reported_count: res.user[0].reported_count
                 ? JSON.parse(res.user[0].reported_count)
-                : []
-            }
+                : [],
+            },
           });
           this.getCountries();
         }
       })
-      .catch(err => this.props.auth.errorMessage(err));
+      .catch((err) => this.props.auth.errorMessage(err));
   };
 
   getMinMax = async () => {
     fetch("/api/search/minMax", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     })
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         if (this._isMounted) {
           if (res.criteria !== false) {
             let min = moment().diff(res.criteria[0].maxdate, "years", false);
@@ -486,39 +484,39 @@ class Home extends Component {
               searchAge: [min, max],
               searchPopularity: [
                 res.criteria[0].minpop,
-                res.criteria[0].maxpop
+                res.criteria[0].maxpop,
               ],
               minAge: min,
               maxAge: max,
               minPop: res.criteria[0].minpop,
-              maxPop: res.criteria[0].maxpop
+              maxPop: res.criteria[0].maxpop,
             });
             this.getLoggedUser();
           }
         }
       })
-      .catch(err => this.props.auth.errorMessage(err));
+      .catch((err) => this.props.auth.errorMessage(err));
   };
 
   getSettingsList = async () => {
     fetch("/api/settings/list")
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         if (this._isMounted) {
           this.setState({
-            tagList: JSON.parse(res.list[0].taglist)
+            tagList: JSON.parse(res.list[0].taglist),
           });
           this.getMinMax();
         }
       })
-      .catch(err => this.props.auth.errorMessage(err));
+      .catch((err) => this.props.auth.errorMessage(err));
   };
 
-  rangeAgeText = value => {
+  rangeAgeText = (value) => {
     return value;
   };
 
-  rangePopText = value => {
+  rangePopText = (value) => {
     return value;
   };
 
@@ -526,27 +524,27 @@ class Home extends Component {
     this.getUsersList(this.state.limit + 20);
   };
 
-  handleFilterAge = e => {
+  handleFilterAge = (e) => {
     if (e[0] > 17) {
       this.setState({
-        searchAge: e
+        searchAge: e,
       });
     }
   };
 
-  handleFilterPop = e => {
+  handleFilterPop = (e) => {
     this.setState({
-      searchPopularity: e
+      searchPopularity: e,
     });
   };
 
-  handleAppendTags = tagToAdd => {
+  handleAppendTags = (tagToAdd) => {
     this.setState({
-      searchTags: tagToAdd
+      searchTags: tagToAdd,
     });
   };
 
-  handleChangeCountry = newCountry => {
+  handleChangeCountry = (newCountry) => {
     let cities = Object.entries(geo)[newCountry.value][1];
     let cityList = [];
     let i = 0;
@@ -554,31 +552,31 @@ class Home extends Component {
     while (i < len) {
       cityList.push({
         value: i,
-        label: cities[i]
+        label: cities[i],
       });
       i++;
     }
     this.setState({
       searchCountry: newCountry.label,
-      cities: cityList
+      cities: cityList,
     });
   };
 
-  handleChangeCity = newCity => {
+  handleChangeCity = (newCity) => {
     this.setState({
-      searchCity: newCity.label
+      searchCity: newCity.label,
     });
   };
 
-  handleFilterSearch = e => {
+  handleFilterSearch = (e) => {
     e.preventDefault();
     this.setState({
-      isLoading: true
+      isLoading: true,
     });
     this.getUsersList(this.state.limit);
   };
 
-  handleSortList = e => {
+  handleSortList = (e) => {
     const value = e.value;
     const { users } = this.state;
     if (value === false) {
@@ -647,16 +645,16 @@ class Home extends Component {
       users.sort((a, b) => (a.km > b.km ? -1 : a.km < b.km ? 1 : 0));
     }
     this.setState({
-      sortedBy: value
+      sortedBy: value,
     });
   };
 
-  handleSearchUser = e => {
+  handleSearchUser = (e) => {
     let value = e.target.value;
     let users = this.state.defaultUsers;
     if (e.target.value) {
       let results = users.filter(
-        el =>
+        (el) =>
           el.username.toLowerCase().includes(value.toLowerCase()) ||
           el.firstname.toLowerCase().includes(value.toLowerCase()) ||
           el.lastname.toLowerCase().includes(value.toLowerCase())
@@ -679,13 +677,13 @@ class Home extends Component {
       searchCity,
       tagList,
       countries,
-      cities
+      cities,
     } = this.state;
     const { classes } = this.props;
 
     return (
       <div className={classes.filterContainer}>
-        <form onSubmit={e => this.handleFilterSearch(e)}>
+        <form onSubmit={(e) => this.handleFilterSearch(e)}>
           <Grid container spacing={1}>
             <Grid className={classes.filterCenter} item xs={12} sm={3}>
               <Typography id="ageSlider" gutterBottom>
@@ -698,12 +696,12 @@ class Home extends Component {
                 handleStyle={[
                   {
                     borderColor: "#292929",
-                    backgroundColor: "#F9712E"
+                    backgroundColor: "#F9712E",
                   },
                   {
                     borderColor: "#292929",
-                    backgroundColor: "#F9712E"
-                  }
+                    backgroundColor: "#F9712E",
+                  },
                 ]}
                 min={minAge}
                 max={maxAge}
@@ -728,22 +726,22 @@ class Home extends Component {
                 handleStyle={[
                   {
                     borderColor: "#292929",
-                    backgroundColor: "#F9712E"
+                    backgroundColor: "#F9712E",
                   },
                   {
                     borderColor: "#292929",
-                    backgroundColor: "#F9712E"
-                  }
+                    backgroundColor: "#F9712E",
+                  },
                 ]}
               />
             </Grid>
             <Grid item xs={12} sm={3}>
               <Select
                 filterOption={createFilter({
-                  ignoreAccents: false
+                  ignoreAccents: false,
                 })}
                 components={{
-                  MenuList
+                  MenuList,
                 }}
                 key={"changeCountries"}
                 placeholder={
@@ -757,13 +755,13 @@ class Home extends Component {
             <Grid item xs={12} sm={3}>
               <Select
                 filterOption={createFilter({
-                  ignoreAccents: false
+                  ignoreAccents: false,
                 })}
                 isSearchable={true}
                 key={"changeCities"}
                 isDisabled={searchCountry ? false : true}
                 components={{
-                  MenuList
+                  MenuList,
                 }}
                 options={cities}
                 onChange={this.handleChangeCity}
@@ -775,10 +773,10 @@ class Home extends Component {
                 closeMenuOnSelect={false}
                 isMulti
                 filterOption={createFilter({
-                  ignoreAccents: false
+                  ignoreAccents: false,
                 })}
                 components={{
-                  MenuList
+                  MenuList,
                 }}
                 isSearchable={true}
                 options={tagList}
@@ -826,7 +824,7 @@ class Home extends Component {
   componentWillUnmount = () => {
     this._isMounted = false;
     this.setState({
-      isLoading: true
+      isLoading: true,
     });
   };
 
@@ -855,7 +853,7 @@ class Home extends Component {
               <InputBase
                 classes={{
                   root: classes.searchContainer,
-                  input: classes.searchInput
+                  input: classes.searchInput,
                 }}
                 value={searchedUser}
                 onChange={this.handleSearchUser}
@@ -874,10 +872,10 @@ class Home extends Component {
           <div className={classes.filterRight}>
             <Select
               filterOption={createFilter({
-                ignoreAccents: false
+                ignoreAccents: false,
               })}
               components={{
-                MenuList
+                MenuList,
               }}
               isSearchable={false}
               options={sortOptions}
@@ -922,9 +920,7 @@ class Home extends Component {
                 LOAD MORE...
               </Button>
             </div>
-          ) : (
-            undefined
-          )}
+          ) : undefined}
         </div>
       </div>
     );

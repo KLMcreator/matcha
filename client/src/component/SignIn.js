@@ -12,15 +12,15 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import VpnKey from "@material-ui/icons/VpnKey";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
-const SignInStyles = theme => ({
+const SignInStyles = (theme) => ({
   loading: {
     display: "flex",
     height: "100%",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   loadingLogo: {
-    color: "#E63946"
+    color: "#E63946",
   },
   paperContainer: {
     height: "100%",
@@ -29,7 +29,7 @@ const SignInStyles = theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   cardSection: {
     backgroundColor: "rgba(255, 255, 255, 0.95)",
@@ -42,34 +42,34 @@ const SignInStyles = theme => ({
     alignItems: "center",
     justifyContent: "center",
     [theme.breakpoints.down("sm")]: {
-      width: "90%"
-    }
+      width: "90%",
+    },
   },
   mainGrid: {
-    padding: 40
+    padding: 40,
   },
   elGrid: {
-    marginBottom: 15
+    marginBottom: 15,
   },
   rootInputText: {
-    fontSize: 13
+    fontSize: 13,
   },
   rootInput: {
     width: "100%",
     "& .MuiInput-underline:after": {
-      borderBottomColor: "#e63946"
-    }
+      borderBottomColor: "#e63946",
+    },
   },
   label: {
     "&$focusedLabel": {
-      color: "#e63946"
-    }
+      color: "#e63946",
+    },
   },
   focusedLabel: {},
   submitButton: {
     width: "100%",
-    marginTop: 25
-  }
+    marginTop: 25,
+  },
 });
 
 class SignIn extends Component {
@@ -78,24 +78,24 @@ class SignIn extends Component {
     this.state = {
       isLoading: true,
       login: "",
-      password: ""
+      password: "",
     };
   }
 
   _isMounted = false;
 
-  submitLogin = e => {
+  submitLogin = (e) => {
     e.preventDefault();
     fetch("/api/login", {
       method: "POST",
       body: JSON.stringify({
         login: this.state.login,
-        password: this.state.password
+        password: this.state.password,
       }),
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     })
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         if (this._isMounted) {
           if (res.login === true) {
             if (res.isCompleted === true) {
@@ -112,14 +112,14 @@ class SignIn extends Component {
           }
         }
       })
-      .catch(err => this.props.auth.errorMessage(err));
+      .catch((err) => this.props.auth.errorMessage(err));
   };
 
-  handleChangeLogin = e => {
+  handleChangeLogin = (e) => {
     this.setState({ login: e.target.value });
   };
 
-  handleChangePassword = e => {
+  handleChangePassword = (e) => {
     this.setState({ password: e.target.value });
   };
 
@@ -151,7 +151,7 @@ class SignIn extends Component {
       <div id="unloggedRoot" className={classes.paperContainer}>
         <Paper className={classes.cardSection} elevation={0}>
           <form
-            onSubmit={e => {
+            onSubmit={(e) => {
               this.submitLogin(e);
             }}
           >
@@ -159,16 +159,16 @@ class SignIn extends Component {
               <Grid item xs={12} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   inputProps={{
-                    className: classes.rootInputText
+                    className: classes.rootInputText,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
-                    }
+                      focused: classes.focusedLabel,
+                    },
                   }}
                   required
                   id="login"
@@ -180,20 +180,20 @@ class SignIn extends Component {
                       <InputAdornment position="start">
                         <AccountCircle />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
               </Grid>
               <Grid item xs={12} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
-                    }
+                      focused: classes.focusedLabel,
+                    },
                   }}
                   required
                   id="password"
@@ -206,7 +206,7 @@ class SignIn extends Component {
                       <InputAdornment position="start">
                         <VpnKey />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
               </Grid>

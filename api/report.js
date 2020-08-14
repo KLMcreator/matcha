@@ -2,7 +2,7 @@ const pool = require("./../pool.js");
 
 const reportUser = (request, response) => {
   const { req, token } = request;
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (req.receiver && token) {
       pool.pool.query(
         "SELECT id FROM users WHERE connected_token = $1",
@@ -33,7 +33,7 @@ const reportUser = (request, response) => {
                     !reportHistory ||
                     reportHistory.length === 0 ||
                     reportHistory
-                      .map(function(e) {
+                      .map(function (e) {
                         return e.id;
                       })
                       .indexOf(sender) === -1
@@ -52,7 +52,7 @@ const reportUser = (request, response) => {
                         }
                         if (!results.rowCount) {
                           resolve({
-                            msg: "Unable to set this user as reported."
+                            msg: "Unable to set this user as reported.",
                           });
                         } else {
                           if (isReported) {
@@ -132,7 +132,7 @@ const reportUser = (request, response) => {
                                                       report: true,
                                                       reported_count: JSON.stringify(
                                                         reportHistory
-                                                      )
+                                                      ),
                                                     });
                                                   }
                                                 );
@@ -149,7 +149,7 @@ const reportUser = (request, response) => {
                           } else {
                             resolve({
                               report: true,
-                              reported_count: JSON.stringify(reportHistory)
+                              reported_count: JSON.stringify(reportHistory),
                             });
                           }
                         }
@@ -166,7 +166,7 @@ const reportUser = (request, response) => {
       );
     } else {
       resolve({
-        msg: "Unable to report this user."
+        msg: "Unable to report this user.",
       });
     }
   });

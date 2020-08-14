@@ -12,15 +12,15 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import EmailIcon from "@material-ui/icons/Email";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
-const RecoverStyles = theme => ({
+const RecoverStyles = (theme) => ({
   loading: {
     display: "flex",
     height: "100%",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   loadingLogo: {
-    color: "#E63946"
+    color: "#E63946",
   },
   paperContainer: {
     height: "100%",
@@ -29,7 +29,7 @@ const RecoverStyles = theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   cardSection: {
     backgroundColor: "rgba(255, 255, 255, 0.95)",
@@ -42,34 +42,34 @@ const RecoverStyles = theme => ({
     alignItems: "center",
     justifyContent: "center",
     [theme.breakpoints.down("sm")]: {
-      width: "90%"
-    }
+      width: "90%",
+    },
   },
   mainGrid: {
-    padding: 40
+    padding: 40,
   },
   elGrid: {
-    marginBottom: 15
+    marginBottom: 15,
   },
   rootInputText: {
-    fontSize: 13
+    fontSize: 13,
   },
   rootInput: {
     width: "100%",
     "& .MuiInput-underline:after": {
-      borderBottomColor: "#e63946"
-    }
+      borderBottomColor: "#e63946",
+    },
   },
   label: {
     "&$focusedLabel": {
-      color: "#e63946"
-    }
+      color: "#e63946",
+    },
   },
   focusedLabel: {},
   submitButton: {
     width: "100%",
-    marginTop: 25
-  }
+    marginTop: 25,
+  },
 });
 
 class Recover extends Component {
@@ -78,24 +78,24 @@ class Recover extends Component {
     this.state = {
       isLoading: true,
       login: "",
-      email: ""
+      email: "",
     };
   }
 
   _isMounted = false;
 
-  submitRecover = e => {
+  submitRecover = (e) => {
     e.preventDefault();
     fetch("/api/recover", {
       method: "POST",
       body: JSON.stringify({
         login: this.state.login,
-        email: this.state.email
+        email: this.state.email,
       }),
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     })
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         if (this._isMounted) {
           if (res.recover.recover === true) {
             this.props.auth.successMessage("Check your emails.");
@@ -105,14 +105,14 @@ class Recover extends Component {
           }
         }
       })
-      .catch(err => this.props.auth.errorMessage(err));
+      .catch((err) => this.props.auth.errorMessage(err));
   };
 
-  handleChangeLogin = e => {
+  handleChangeLogin = (e) => {
     this.setState({ login: e.target.value });
   };
 
-  handleChangeEmail = e => {
+  handleChangeEmail = (e) => {
     this.setState({ email: e.target.value });
   };
 
@@ -148,16 +148,16 @@ class Recover extends Component {
               <Grid item xs={12} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   inputProps={{
-                    className: classes.rootInputText
+                    className: classes.rootInputText,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
-                    }
+                      focused: classes.focusedLabel,
+                    },
                   }}
                   required
                   id="login"
@@ -170,20 +170,20 @@ class Recover extends Component {
                       <InputAdornment position="start">
                         <AccountCircle />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
               </Grid>
               <Grid item xs={12} className={classes.elGrid}>
                 <TextField
                   classes={{
-                    root: classes.rootInput
+                    root: classes.rootInput,
                   }}
                   InputLabelProps={{
                     classes: {
                       root: classes.label,
-                      focused: classes.focusedLabel
-                    }
+                      focused: classes.focusedLabel,
+                    },
                   }}
                   required
                   id="email"
@@ -196,7 +196,7 @@ class Recover extends Component {
                       <InputAdornment position="start">
                         <EmailIcon />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
               </Grid>
