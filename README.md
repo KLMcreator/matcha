@@ -57,7 +57,7 @@ Start both servers (Node.js and React) and you are good to go. (In case you didn
 - Between 500 and 1000 fake users with real data<br />
 - Big center of interests list<br />
 - You can upload up to 5 profile pictures<br />
-- Real time notification system for likes, messages, visists, unlikes<br />
+- Real time notification system for likes, messages, visits, unlikes<br />
 - Block and report system available (10 reports = disabled account)<br />
 - Real time live chat<br />
 - Fully responsive<br />
