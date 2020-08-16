@@ -79,7 +79,7 @@ const sendMail = (receiver, type, random) => {
         service: "Gmail",
         auth: {
           user: "matcha42.no.reply@gmail.com",
-          pass: "Matcha_42",
+          pass: process.env.MAIL_PWD,
         },
       });
       var message = {
