@@ -73,5 +73,5 @@ This project won't be updated but if you want to pull something, feel free to do
 
 # Authors
 
-- Clement [KLMcreator](https://github.com/KLMcreator) VANNICATTE<br />
-- Elise [Eozimek](https://github.com/Eozimek) OZIMEK
+- [shortcuts](https://github.com/shortcuts)<br />
+- [Eozimek](https://github.com/Eozimek)
